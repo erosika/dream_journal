@@ -9,6 +9,7 @@ import base64
 import datetime
 from datetime import date, time
 import random
+import sys
 import json
 
 
@@ -29,12 +30,12 @@ from google.auth.transport.requests import Request
 # binary to text encoding/decoding
 from base64 import urlsafe_b64decode, urlsafe_b64encode
 # for applicable MIME types
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+# from email.mime.text import MIMEText
+# from email.mime.multipart import MIMEMultipart
 # from email.mime.image import MIMEImage
 # from email.mime.audio import MIMEAudio
-from email.mime.base import MIMEBase
-from mimetypes import guess_type as guess_mime_type
+# from email.mime.base import MIMEBase
+# from mimetypes import guess_type as guess_mime_type
 
 
 verbose = False
@@ -206,16 +207,17 @@ def write_to_journal(msg_id):
 
 if __name__ == '__main__':
 
+    command = sys.argv[-1]
+    if command == "alert":
+        dream_alert(subject, body, to)
 
-    dream_alert(subject, body, to)
+    elif command == "write":
+        msg_ids = search_messages(service, f"from: {dreamer_contact}, is:unread")
+        log(msg_ids)
 
-
-    msg_ids = search_messages(service, f"from: {dreamer_contact}, is:unread")
-    log(msg_ids)
-
-    for msg_id in msg_ids:
-        write_to_journal(msg_id)
-        mark_as_read(service, f"from: {dreamer_contact}, is:unread")
+        for msg_id in msg_ids:
+            write_to_journal(msg_id)
+            mark_as_read(service, f"from: {dreamer_contact}, is:unread")
 
 
 
@@ -241,7 +243,9 @@ in a function called get_messages()
 
 
 
-fix name errors not defined, fix message_ids not defined
+create a shell script which calls program
+script is native
+
 """
 
 
