@@ -8,10 +8,8 @@ from email.message import EmailMessage
 import base64
 import datetime
 from datetime import date, time
-import random
 import sys
 import json
-
 
 
 # enable Gmail API
@@ -29,13 +27,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 # binary to text encoding/decoding
 from base64 import urlsafe_b64decode, urlsafe_b64encode
-# for applicable MIME types
-# from email.mime.text import MIMEText
-# from email.mime.multipart import MIMEMultipart
-# from email.mime.image import MIMEImage
-# from email.mime.audio import MIMEAudio
-# from email.mime.base import MIMEBase
-# from mimetypes import guess_type as guess_mime_type
+
 
 
 verbose = False
@@ -52,7 +44,6 @@ with open("secrets.json", "r") as secrets_file:
 user = data["user"]
 password = data["password"]
 app_pw_gmail = data["app_pw_gmail"]
-
 
 # Dreamer information
 dreamer_contact =  data["dreamer_contact"]
@@ -94,7 +85,6 @@ service = authenticate_gmail()
 subject = "Gm"
 body = "Did you have a dream last night?"
 to = dreamer_contact
-
 
 # Did you have a dream last night?
 
@@ -157,10 +147,10 @@ def get_message(service, user, msg_id):
             log(msg_str.get_payload())
             return msg_str.get_payload()
 
-        # split message on "-----Original Message-----" & only return first half
 
     except errors.HttpError as error:
         print("An error occured: %s") % error
+
 
 def mark_as_read(service, search_string):
     log("mark as read")
@@ -194,17 +184,6 @@ def write_to_journal(msg_id):
             journal.write(f"entry: {date} \n\n{message[0]} \n\n")
 
 
-
-# def time function for dream_alert() ??
-# at random time between 5:30 and 7:30 AM
-# use with ??
-
-
-
-# def time function for search_messages()
-# if time == noon:
-
-
 if __name__ == '__main__':
 
     command = sys.argv[-1]
@@ -218,58 +197,3 @@ if __name__ == '__main__':
         for msg_id in msg_ids:
             write_to_journal(msg_id)
             mark_as_read(service, f"from: {dreamer_contact}, is:unread")
-
-
-
-"""
-
-once a day, at a random time between 5 and 8 am,
-
-bot emails the alert -- did you have a dream last night?
-
-dreamer can text back the dream they had
-
-at noon, the bot searches the messages aka search_messages()
-
-        which involves authenticating gmail, opening unread messages from dreamer,
-
-        getting message ids, storing message ids in a list that gets created new each day
-
-in a function called get_messages()
-
-    the bot uses the message ids to read the messages, and decodes them into text
-
-    and writes to journal
-
-
-
-create a shell script which calls program
-script is native
-
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# filters results from specific person aka dreamer
-# results = service.users().messages().list(userId='me', labelIds=['INBOX'], q=f"from:{dreamer_contact}, is:unread").execute()
-
