@@ -23,9 +23,9 @@
 
 * create secret info to a dictionary called secrets.json as:
   - {
-  "user" : "XXXXXXXXXX@gmail.com",          --| dream journal bot's dedicated gmail
-  "password" : "XXXXXXXXXX",              --| bot's gmail password
-  "app_pw_gmail" : "XXXXXXXXXX",               --| bot's gmail app password
+  "user" : "XXXXXXXXXX@gmail.com",          --| dream journal bot's dedicated gmail \n
+  "password" : "XXXXXXXXXX",              --| bot's gmail password \n
+  "app_pw_gmail" : "XXXXXXXXXX",               --| bot's gmail app password \n
   "dreamer_contact" :  "XXXXXXXXX@yourSMSgateway.net"    --| this is your phone number
   }
 
