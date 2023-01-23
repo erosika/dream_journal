@@ -23,10 +23,10 @@
 
 * create secret info to a dictionary called secrets.json as:
   - {
-  "user" : "XXXXXXXXXX@gmail.com",          --| dream journal bot's dedicated gmail \n
-  "password" : "XXXXXXXXXX",              --| bot's gmail password \n
-  "app_pw_gmail" : "XXXXXXXXXX",               --| bot's gmail app password \n
-  "dreamer_contact" :  "XXXXXXXXX@yourSMSgateway.net"    --| this is your phone number
+  "user" : "XXXXXXXXXX@gmail.com",          --| dream journal bot's dedicated gmail <br>
+  "password" : "XXXXXXXXXX",              --| bot's gmail password <br>
+  "app_pw_gmail" : "XXXXXXXXXX",               --| bot's gmail app password <br>
+  "dreamer_contact" :  "XXXXXXXXX@yourSMSgateway.net"    --| this is your phone <br>
   }
 
 
