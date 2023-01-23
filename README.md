@@ -1,6 +1,6 @@
 # dream_journal
 
-  * bot records dream entries to a txt file
+  bot records dream entries to a txt file
 
   - first thing in the morning:
   bot texts the 'dreamer' to ask if they had a dream last night
